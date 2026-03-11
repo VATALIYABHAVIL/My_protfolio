@@ -60,7 +60,7 @@
     .side-identity { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 13px; font-weight: 600; }
     .profile-mini { width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; }
 
-    nav a { text-decoration: none; color: var(--text); margin-left: 25px; font-family: var(--mono); font-size: 15px; text-transform: uppercase; opacity: 0.6; transition: 0.3s; }
+    nav a { text-decoration: none; color: var(--text); margin-left: 25px; font-family: var(--mono); font-size: 15px; text-transform: uppercase; opacity: 0.6; transition: 0.3s; cursor: pointer; }
     nav a:hover { opacity: 1; color: var(--accent); }
     
     /* Social Link Styles */
@@ -87,6 +87,68 @@
     .work-item:hover { padding-left: 30px; border-bottom-color: var(--accent); }
     .work-item h3 { font-family: var(--heading-font); font-size: clamp(1.8rem, 5vw, 3.8rem); text-transform: uppercase; }
     .work-meta { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 15px; display: flex; gap: 20px; }
+
+    /* --- Live Stats Cards --- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 35px 25px;
+      color: #111111;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .stat-number {
+      font-family: var(--heading-font);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .stat-plus {
+      font-family: var(--heading-font);
+      font-size: 3rem;
+      font-weight: 800;
+      margin-left: 2px;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-family: var(--body-font);
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-top: 5px;
+      color: #000000;
+    }
+
+    .stat-divider {
+      border: none;
+      height: 1.5px;
+      background: #e0e0e0;
+      margin: 20px 0;
+    }
+
+    .stat-desc {
+      font-family: var(--body-font);
+      font-size: 0.9rem;
+      color: #555555;
+      line-height: 1.5;
+    }
 
     /* About Section */
     .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; }
@@ -127,6 +189,8 @@
     <nav>
       <a href="#work">Work</a>
       <a href="#about">About</a>
+      <a href="https://github.com/vataliyabhavil" onclick="trackClick(event, 'github_clicks', this.href)"><i class="fa-brands fa-github"></i></a>
+      <a href="https://linkedin.com/in/vataliyabhavil" onclick="trackClick(event, 'linkedin_clicks', this.href)"><i class="fa-brands fa-linkedin"></i></a>
       <a href="mailto:vataliyabhavil3@gmail.com">Contact</a>
     </nav>
   </header>
@@ -139,7 +203,7 @@
   <section class="section-padding" id="work">
     <span class="hero-label">SELECTED WORKS</span>
     
-    <a href="https://github.com/VATALIYABHAVIL/Online_Book_Apply.git" class="work-item" data-aos="fade-up">
+    <a href="https://github.com/VATALIYABHAVIL/Online_Book_Apply.git" target="_blank" class="work-item" data-aos="fade-up">
       <h3>Online Book Apply</h3>
       <div class="work-meta">
         <span>01 / FULL-STACK ARCHITECTURE</span>
@@ -147,7 +211,7 @@
       </div>
     </a>
 
-    <a href="https://github.com/VATALIYABHAVIL/Employee_Leave.git" class="work-item" data-aos="fade-up" data-aos-delay="100">
+    <a href="https://github.com/VATALIYABHAVIL/Employee_Leave.git" target="_blank" class="work-item" data-aos="fade-up" data-aos-delay="100">
       <h3>Employee Leave Management</h3>
       <div class="work-meta">
         <span>02 / INTERFACE LOGIC</span>
@@ -155,13 +219,49 @@
       </div>
     </a>
 
-    <a href="https://github.com/VATALIYABHAVIL/Text-to-mood-detect.git" class="work-item" data-aos="fade-up" data-aos-delay="200">
+    <a href="https://github.com/VATALIYABHAVIL/Text-to-mood-detect.git" target="_blank" class="work-item" data-aos="fade-up" data-aos-delay="200">
       <h3>Text to mood detect</h3>
       <div class="work-meta">
         <span>03 / Using Text Detect Mood</span>
         <span>Python</span>
       </div>
     </a>
+  </section>
+
+  <section class="section-padding" id="statistics">
+    <div class="stats-grid" id="stats-container">
+      
+      <div class="stat-card" data-aos="fade-up">
+        <div class="stat-header">
+          <h2 class="stat-number" id="card-views" data-target="0">0</h2>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">Website Views</div>
+        <hr class="stat-divider">
+        <p class="stat-desc">Total number of times this portfolio has been visited.</p>
+      </div>
+
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-header">
+          <h2 class="stat-number" id="card-linkedin" data-target="0">0</h2>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">LinkedIn Visits</div>
+        <hr class="stat-divider">
+        <p class="stat-desc">Professionals who connected with me via this site.</p>
+      </div>
+
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-header">
+          <h2 class="stat-number" id="card-github" data-target="0">0</h2>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">GitHub Visits</div>
+        <hr class="stat-divider">
+        <p class="stat-desc">Developers who explored my repositories and code.</p>
+      </div>
+
+    </div>
   </section>
   
   <section class="section-padding" id="about">
@@ -188,10 +288,10 @@
     </div>
 
     <div style="margin-top: 60px; display: flex; gap: 40px; border-top: 1px solid #1a1a1a; padding-top: 40px;">
-      <a href="https://github.com/vataliyabhavil" target="_blank" style="text-decoration: none; color: var(--dim); font-family: var(--mono); font-size: 13px; transition: 0.3s;">
+      <a href="https://github.com/vataliyabhavil" onclick="trackClick(event, 'github_clicks', this.href)" style="text-decoration: none; color: var(--dim); font-family: var(--mono); font-size: 13px; transition: 0.3s;">
         <i class="fa-brands fa-github" style="margin-right: 8px;"></i> GITHUB
       </a>
-      <a href="https://linkedin.com/in/vataliyabhavil" target="_blank" style="text-decoration: none; color: var(--dim); font-family: var(--mono); font-size: 13px; transition: 0.3s;">
+      <a href="https://linkedin.com/in/vataliyabhavil" onclick="trackClick(event, 'linkedin_clicks', this.href)" style="text-decoration: none; color: var(--dim); font-family: var(--mono); font-size: 13px; transition: 0.3s;">
         <i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i> LINKEDIN
       </a>
     </div>
@@ -204,6 +304,81 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', once: true });
+
+    /* =========================================================
+       LIVE API COUNTER + SCROLL ANIMATION
+       ========================================================= */
+    const namespace = 'vataliyabhavil_live_portfolio'; 
+
+    // 1. Function to handle outbound link clicks (GitHub/LinkedIn)
+    function trackClick(event, key, url) {
+      event.preventDefault(); 
+      // Send the click to the API silently
+      fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+        .catch(err => console.error("Tracking error:", err))
+        .finally(() => {
+          // Redirect to the profile after a tiny delay
+          setTimeout(() => { window.open(url, '_blank'); }, 150);
+        });
+    }
+
+    // 2. Fetch the live data when the page loads
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // Add +1 to Website Views and set the target
+        const viewsRes = await fetch(`https://api.counterapi.dev/v1/${namespace}/page_views/up`);
+        const viewsData = await viewsRes.json();
+        document.getElementById('card-views').setAttribute('data-target', viewsData.count || 1);
+
+        // Fetch GitHub clicks and set the target
+        const githubRes = await fetch(`https://api.counterapi.dev/v1/${namespace}/github_clicks`);
+        const githubData = await githubRes.json();
+        document.getElementById('card-github').setAttribute('data-target', githubData.count || 0);
+
+        // Fetch LinkedIn clicks and set the target
+        const linkedinRes = await fetch(`https://api.counterapi.dev/v1/${namespace}/linkedin_clicks`);
+        const linkedinData = await linkedinRes.json();
+        document.getElementById('card-linkedin').setAttribute('data-target', linkedinData.count || 0);
+      } catch (error) {
+        console.log("Error fetching live stats", error);
+      }
+    });
+
+    // 3. Animate the numbers when they scroll into view
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsContainer = document.getElementById('stats-container');
+    let animated = false; 
+
+    const animateCounters = () => {
+      statNumbers.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target'); 
+          const count = +counter.innerText; 
+          
+          // Calculate speed based on how high the number is
+          const increment = target / 40; 
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 30); 
+          } else {
+            counter.innerText = target; 
+          }
+        };
+        updateCount();
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !animated) {
+        animateCounters();
+        animated = true; 
+      }
+    }, { threshold: 0.5 }); 
+
+    if (statsContainer) {
+      observer.observe(statsContainer);
+    }
 
     /* --- UNIQUE NEURAL GRID ANIMATION --- */
     const canvas = document.getElementById('bg-canvas');
@@ -309,7 +484,3 @@
   </script>
 </body>
 </html>
-
-
-
-
