@@ -1,5 +1,4 @@
-<style>
-  /* Reset and Global Styles */
+/* Reset and Global Styles */
   * {
     margin: 0;
     padding: 0;
@@ -60,6 +59,15 @@
 
   #home:hover {
     background: linear-gradient(to left, #3466a5, #012f57); /* Background changes on hover */
+  }
+
+  #home img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border: 5px solid #4a90e2;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Transition for transform and shadow */
   }
 
   #home img:hover {
@@ -273,4 +281,71 @@
       max-width: 400px;
     }
   }
-</style>
+
+/* =============================================
+   CurvedLoop — Vanilla JS Port of React Bits
+   ============================================= */
+
+.curved-loop-section {
+  padding: 60px 0 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.curved-loop-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 40px;
+  padding: 0 10%;
+  text-transform: uppercase;
+}
+
+.curved-loop-jacket {
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.curved-loop-jacket:active {
+  cursor: grabbing;
+}
+
+.curved-loop-jacket.non-interactive {
+  cursor: auto;
+}
+
+.curved-loop-svg {
+  user-select: none;
+  width: 100%;
+  aspect-ratio: 100 / 12;
+  overflow: visible;
+  display: block;
+  font-size: 5.5rem;
+  fill: #ffffff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Gradient fill for the skill text */
+.curved-loop-svg .skill-text {
+  fill: url(#skillGradient);
+}
+
+/* Accent color highlight on the dots/separators */
+.curved-loop-svg .skill-accent {
+  fill: #007AFF;
+}
+
+@media (max-width: 768px) {
+  .curved-loop-svg {
+    font-size: 3.5rem;
+  }
+}
