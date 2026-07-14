@@ -62,15 +62,6 @@
     background: linear-gradient(to left, #3466a5, #012f57); /* Background changes on hover */
   }
 
-  #home img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
-    border: 5px solid #4a90e2;
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Transition for transform and shadow */
-  }
-
   #home img:hover {
     transform: scale(1.1); /* Slight zoom effect */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
